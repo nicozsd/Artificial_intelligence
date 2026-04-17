@@ -1,0 +1,95 @@
+{
+  "timestamp": "2026-04-17T17:00:18.202379",
+  "solver": "Path Finder",
+  "configuration": {
+    "test_count": 10,
+    "grid_size": 10,
+    "base_difficulty": 5
+  },
+  "status": {
+    "completed": true,
+    "interrupted": false
+  },
+  "outcomes": [
+    {
+      "grid_id": 1,
+      "complexity": 5,
+      "success": true,
+      "moves": 5,
+      "examined": 6,
+      "duration": 0.025446653366088867
+    },
+    {
+      "grid_id": 2,
+      "complexity": 6,
+      "success": true,
+      "moves": 6,
+      "examined": 7,
+      "duration": 0.02932453155517578
+    },
+    {
+      "grid_id": 3,
+      "complexity": 7,
+      "success": true,
+      "moves": 9,
+      "examined": 13,
+      "duration": 0.05685067176818848
+    },
+    {
+      "grid_id": 4,
+      "complexity": 8,
+      "success": true,
+      "moves": 12,
+      "examined": 78,
+      "duration": 0.3729736804962158
+    },
+    {
+      "grid_id": 5,
+      "complexity": 9,
+      "success": true,
+      "moves": 9,
+      "examined": 10,
+      "duration": 0.04960322380065918
+    },
+    {
+      "grid_id": 6,
+      "complexity": 10,
+      "success": true,
+      "moves": 12,
+      "examined": 17,
+      "duration": 0.07550692558288574
+    },
+    {
+      "grid_id": 7,
+      "complexity": 11,
+      "success": true,
+      "moves": 7,
+      "examined": 9,
+      "duration": 0.0389559268951416
+    },
+    {
+      "grid_id": 8,
+      "complexity": 12,
+      "success": true,
+      "moves": 10,
+      "examined": 11,
+      "duration": 0.05026602745056152
+    },
+    {
+      "grid_id": 9,
+      "complexity": 13,
+      "success": true,
+      "moves": 15,
+      "examined": 63,
+      "duration": 0.3058159351348877
+    },
+    {
+      "grid_id": 10,
+      "complexity": 14,
+      "success": true,
+      "moves": 12,
+      "examined": 28,
+      "duration": 0.13230514526367188
+    }
+  ]
+}

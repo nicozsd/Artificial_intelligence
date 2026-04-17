@@ -1,0 +1,95 @@
+{
+  "timestamp": "2026-04-17T17:00:29.894065",
+  "solver": "Hill Climber",
+  "configuration": {
+    "test_count": 10,
+    "grid_size": 10,
+    "base_difficulty": 5
+  },
+  "status": {
+    "completed": true,
+    "interrupted": false
+  },
+  "outcomes": [
+    {
+      "grid_id": 1,
+      "complexity": 5,
+      "success": true,
+      "moves": 5,
+      "examined": 6,
+      "duration": 0.022806167602539062
+    },
+    {
+      "grid_id": 2,
+      "complexity": 6,
+      "success": false,
+      "moves": null,
+      "examined": 6,
+      "duration": 0.027866601943969727
+    },
+    {
+      "grid_id": 3,
+      "complexity": 7,
+      "success": true,
+      "moves": 7,
+      "examined": 8,
+      "duration": 0.032054901123046875
+    },
+    {
+      "grid_id": 4,
+      "complexity": 8,
+      "success": true,
+      "moves": 10,
+      "examined": 11,
+      "duration": 0.04483938217163086
+    },
+    {
+      "grid_id": 5,
+      "complexity": 9,
+      "success": false,
+      "moves": null,
+      "examined": 12,
+      "duration": 0.05377554893493652
+    },
+    {
+      "grid_id": 6,
+      "complexity": 10,
+      "success": true,
+      "moves": 10,
+      "examined": 11,
+      "duration": 0.04641866683959961
+    },
+    {
+      "grid_id": 7,
+      "complexity": 11,
+      "success": true,
+      "moves": 9,
+      "examined": 10,
+      "duration": 0.04034090042114258
+    },
+    {
+      "grid_id": 8,
+      "complexity": 12,
+      "success": true,
+      "moves": 8,
+      "examined": 9,
+      "duration": 0.03710508346557617
+    },
+    {
+      "grid_id": 9,
+      "complexity": 13,
+      "success": true,
+      "moves": 13,
+      "examined": 14,
+      "duration": 0.059513092041015625
+    },
+    {
+      "grid_id": 10,
+      "complexity": 14,
+      "success": false,
+      "moves": null,
+      "examined": 13,
+      "duration": 0.06000471115112305
+    }
+  ]
+}

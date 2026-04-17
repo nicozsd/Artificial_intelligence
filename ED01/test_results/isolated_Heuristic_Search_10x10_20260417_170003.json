@@ -1,0 +1,95 @@
+{
+  "timestamp": "2026-04-17T17:00:03.805136",
+  "solver": "Heuristic Search",
+  "configuration": {
+    "test_count": 10,
+    "grid_size": 10,
+    "base_difficulty": 5
+  },
+  "status": {
+    "completed": true,
+    "interrupted": false
+  },
+  "outcomes": [
+    {
+      "grid_id": 1,
+      "complexity": 5,
+      "success": true,
+      "moves": 5,
+      "examined": 7,
+      "duration": 0.028856277465820312
+    },
+    {
+      "grid_id": 2,
+      "complexity": 6,
+      "success": true,
+      "moves": 6,
+      "examined": 7,
+      "duration": 0.029212474822998047
+    },
+    {
+      "grid_id": 3,
+      "complexity": 7,
+      "success": true,
+      "moves": 7,
+      "examined": 10,
+      "duration": 0.04398918151855469
+    },
+    {
+      "grid_id": 4,
+      "complexity": 8,
+      "success": true,
+      "moves": 6,
+      "examined": 7,
+      "duration": 0.028167724609375
+    },
+    {
+      "grid_id": 5,
+      "complexity": 9,
+      "success": true,
+      "moves": 9,
+      "examined": 10,
+      "duration": 0.04401350021362305
+    },
+    {
+      "grid_id": 6,
+      "complexity": 10,
+      "success": true,
+      "moves": 10,
+      "examined": 22,
+      "duration": 0.10365796089172363
+    },
+    {
+      "grid_id": 7,
+      "complexity": 11,
+      "success": true,
+      "moves": 15,
+      "examined": 16,
+      "duration": 0.06989502906799316
+    },
+    {
+      "grid_id": 8,
+      "complexity": 12,
+      "success": true,
+      "moves": 12,
+      "examined": 13,
+      "duration": 0.061189889907836914
+    },
+    {
+      "grid_id": 9,
+      "complexity": 13,
+      "success": true,
+      "moves": 9,
+      "examined": 10,
+      "duration": 0.042378902435302734
+    },
+    {
+      "grid_id": 10,
+      "complexity": 14,
+      "success": true,
+      "moves": 76,
+      "examined": 1502,
+      "duration": 8.279967546463013
+    }
+  ]
+}

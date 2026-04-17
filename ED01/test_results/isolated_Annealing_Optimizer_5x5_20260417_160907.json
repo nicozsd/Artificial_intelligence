@@ -1,0 +1,95 @@
+{
+  "timestamp": "2026-04-17T16:09:07.161395",
+  "solver": "Annealing Optimizer",
+  "configuration": {
+    "test_count": 10,
+    "grid_size": 5,
+    "base_difficulty": 3
+  },
+  "status": {
+    "completed": true,
+    "interrupted": false
+  },
+  "outcomes": [
+    {
+      "grid_id": 1,
+      "complexity": 3,
+      "success": false,
+      "moves": null,
+      "examined": 45600,
+      "duration": 17.94100308418274
+    },
+    {
+      "grid_id": 2,
+      "complexity": 4,
+      "success": false,
+      "moves": null,
+      "examined": 45600,
+      "duration": 21.33795475959778
+    },
+    {
+      "grid_id": 3,
+      "complexity": 5,
+      "success": true,
+      "moves": 19627,
+      "examined": 27767,
+      "duration": 11.506992101669312
+    },
+    {
+      "grid_id": 4,
+      "complexity": 6,
+      "success": false,
+      "moves": null,
+      "examined": 45600,
+      "duration": 22.328495979309082
+    },
+    {
+      "grid_id": 5,
+      "complexity": 7,
+      "success": false,
+      "moves": null,
+      "examined": 45600,
+      "duration": 21.18593168258667
+    },
+    {
+      "grid_id": 6,
+      "complexity": 8,
+      "success": false,
+      "moves": null,
+      "examined": 45600,
+      "duration": 19.05887794494629
+    },
+    {
+      "grid_id": 7,
+      "complexity": 9,
+      "success": false,
+      "moves": null,
+      "examined": 45600,
+      "duration": 19.529577255249023
+    },
+    {
+      "grid_id": 8,
+      "complexity": 10,
+      "success": false,
+      "moves": null,
+      "examined": 45600,
+      "duration": 19.16784954071045
+    },
+    {
+      "grid_id": 9,
+      "complexity": 11,
+      "success": false,
+      "moves": null,
+      "examined": 45600,
+      "duration": 18.426254272460938
+    },
+    {
+      "grid_id": 10,
+      "complexity": 12,
+      "success": true,
+      "moves": 19814,
+      "examined": 28794,
+      "duration": 14.163347005844116
+    }
+  ]
+}

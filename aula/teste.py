@@ -18,7 +18,7 @@ def ler_cidades_txt(arquivo: str) -> dict:
                 partes = linha.split()
                 if len(partes) >= 3:
                     x, y = float(partes[1]), float(partes[2])
-                    # Se as coordenadas são decimais pequenas (< 100), multiplica por 100
+                    # Multiplica por 100 para escala adequada
                     if x < 100 and y < 100:
                         x, y = x * 100, y * 100
                     cidades[int(partes[0])] = (x, y)
@@ -279,8 +279,8 @@ def busca_local_2opt(rota: List[int], cidades: dict) -> Tuple[List[int], float]:
     
     while melhorou:
         melhorou = False
-        for i in range(1, len(rota) - 1):
-            for k in range(i + 1, len(rota)):
+        for i in range(len(rota) - 1):
+            for k in range(i + 2, len(rota)):
                 nova_rota = two_opt(melhor_rota, i, k)
                 novo_custo = calcular_custo_rota(nova_rota, cidades)
                 
@@ -302,15 +302,15 @@ def busca_local_completa(rota: List[int], cidades: dict) -> Tuple[List[int], flo
     n = len(rota)
     
     iteracoes = 0
-    max_iter = 100
+    max_iter = 200
     
     while melhorou and iteracoes < max_iter:
         melhorou = False
         iteracoes += 1
         
-        # 2-opt
-        for i in range(1, min(n - 1, 30)):  # Limita para não demorar muito
-            for k in range(i + 1, min(n, i + 20)):
+        # 2-opt completo
+        for i in range(n - 1):
+            for k in range(i + 2, n):
                 nova_rota = two_opt(melhor_rota, i, k)
                 novo_custo = calcular_custo_rota(nova_rota, cidades)
                 
@@ -336,6 +336,24 @@ def busca_local_completa(rota: List[int], cidades: dict) -> Tuple[List[int], flo
                                 melhor_custo = novo_custo
                                 melhorou = True
                                 break
+                    if melhorou:
+                        break
+                if melhorou:
+                    break
+        
+        # 3-opt se ainda não melhorou
+        if not melhorou and n >= 6:
+            for i in range(n - 5):
+                for j in range(i + 2, min(n - 3, i + 8)):
+                    for k in range(j + 2, min(n - 1, j + 8)):
+                        nova_rota = three_opt_swap(melhor_rota, i, j, k)
+                        novo_custo = calcular_custo_rota(nova_rota, cidades)
+                        
+                        if novo_custo < melhor_custo:
+                            melhor_rota = nova_rota
+                            melhor_custo = novo_custo
+                            melhorou = True
+                            break
                     if melhorou:
                         break
                 if melhorou:
@@ -508,7 +526,7 @@ def main():
     tempo_inicio = time.time()        
     
     print("=" * 60)
-    print("PCV - DIJKSTRA + BELLMAN-FORD")
+    print("PCV - BUSCA LOCAL EUCLIDIANA")
     print("=" * 60)
 
     #calibração
@@ -520,55 +538,59 @@ def main():
     melhor_rota_global = None
     melhor_custo_global = float('inf')
     
-    # FASE 1: Dijkstra
-    print("\n[Dijkstra]", end=" ")
-    for i in range(15):
-        rota = gerar_rota_dijkstra_greedy(cidades)
-        custo = calcular_custo_rota(rota, cidades)
-        if custo < melhor_custo_global:
-            melhor_rota_global = rota
-            melhor_custo_global = custo
-    print(f"Melhor: {melhor_custo_global:.0f}")
-    
-    # FASE 2: Bellman-Ford
-    print("[Bellman-Ford]", end=" ")
-    for i in range(15):
-        rota = gerar_rota_bellman_ford_greedy(cidades)
-        custo = calcular_custo_rota(rota, cidades)
-        if custo < melhor_custo_global:
-            melhor_rota_global = rota
-            melhor_custo_global = custo
-    print(f"Melhor: {melhor_custo_global:.0f}")
-    
-    # FASE 3: 2-opt
-    print("[2-opt]", end=" ")
-    melhor_rota_global, melhor_custo_global = busca_local_2opt(melhor_rota_global, cidades)
-    print(f"Melhor: {melhor_custo_global:.0f}")
-    
-    # FASE 4: Nearest Neighbor + 2-opt
-    print("[NN+2opt]", end=" ")
-    rota_referencia = None
-    custo_referencia = float('inf')
-    
-    for i in range(30):
+    # FASE 1: Múltiplas inicializações com Nearest Neighbor + 2-opt completo
+    print("\n[NN + 2-opt]", end=" ")
+    for i in range(50):
         rota = gerar_rota_nearest_neighbor(cidades)
         rota, custo = busca_local_2opt(rota, cidades)
         
-        if abs(custo - 3323) < abs(custo_referencia - 3323):
-            rota_referencia = rota
-            custo_referencia = custo
+        if custo < melhor_custo_global:
+            melhor_rota_global = rota
+            melhor_custo_global = custo
+            print(f"\n  Nova melhor: {round(melhor_custo_global)} - Rota: {melhor_rota_global}")
+    print(f"Melhor: {melhor_custo_global:.0f}")
+    
+    # FASE 2: Busca Local Completa (2-opt + Or-opt + 3-opt)
+    print("[Busca Local Completa]", end=" ")
+    for i in range(20):
+        rota = gerar_rota_nearest_neighbor(cidades)
+        rota, custo = busca_local_completa(rota, cidades)
         
         if custo < melhor_custo_global:
             melhor_rota_global = rota
             melhor_custo_global = custo
+            print(f"\n  Nova melhor: {round(melhor_custo_global)} - Rota: {melhor_rota_global}")
     print(f"Melhor: {melhor_custo_global:.0f}")
+    
+    # FASE 3: Inicializações aleatórias + Busca Local Completa
+    print("[Aleatório + Busca Local]", end=" ")
+    for i in range(20):
+        rota = gerar_rota_inicial(cidades)
+        rota, custo = busca_local_completa(rota, cidades)
+        
+        if custo < melhor_custo_global:
+            melhor_rota_global = rota
+            melhor_custo_global = custo
+            print(f"\n  Nova melhor: {round(melhor_custo_global)} - Rota: {melhor_rota_global}")
+    print(f"Melhor: {melhor_custo_global:.0f}")
+    
+    # FASE 4: Iterated Local Search (Busca Local Iterada)
+    print("[ILS - DESATIVADO]")
+    
+    # FASE 5: Simulated Annealing (Recozimento Simulado)
+    print("[SA - DESATIVADO]")
+    
+    # FASE FINAL: Refinamento intensivo com busca local completa
+    print("[Refinamento Final]", end=" ")
+    melhor_rota_global, melhor_custo_global = busca_local_completa(melhor_rota_global, cidades)
+    print(f"Final: {melhor_custo_global:.0f}")
     
     tempo_fim = time.time()
     tempo_execucao = tempo_fim - tempo_inicio
     
     print("\n" + "=" * 60)
-    print(f"RESULTADO: {melhor_custo_global:.0f} | Tempo: {tempo_execucao:.2f}s")
-    print(f"Referência (3323): {custo_referencia:.0f} | Diferença: {abs(custo_referencia - 3323):.0f}")
+    print(f"RESULTADO FINAL: {round(melhor_custo_global)} | Tempo: {tempo_execucao:.2f}s")    
+    print(f"Rota: {melhor_rota_global}")
     print("=" * 60)
         
 if __name__ == "__main__":

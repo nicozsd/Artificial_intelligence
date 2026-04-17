@@ -1,0 +1,95 @@
+{
+  "timestamp": "2026-04-17T16:59:37.608654",
+  "solver": "BFS",
+  "configuration": {
+    "test_count": 10,
+    "grid_size": 5,
+    "base_difficulty": 3
+  },
+  "status": {
+    "completed": true,
+    "interrupted": false
+  },
+  "outcomes": [
+    {
+      "grid_id": 1,
+      "complexity": 3,
+      "success": true,
+      "moves": 3,
+      "examined": 1664,
+      "duration": 0.7166168689727783
+    },
+    {
+      "grid_id": 2,
+      "complexity": 4,
+      "success": true,
+      "moves": 4,
+      "examined": 7011,
+      "duration": 3.148423194885254
+    },
+    {
+      "grid_id": 3,
+      "complexity": 5,
+      "success": true,
+      "moves": 3,
+      "examined": 864,
+      "duration": 0.37395381927490234
+    },
+    {
+      "grid_id": 4,
+      "complexity": 6,
+      "success": true,
+      "moves": 4,
+      "examined": 12589,
+      "duration": 5.526952266693115
+    },
+    {
+      "grid_id": 5,
+      "complexity": 7,
+      "success": true,
+      "moves": 7,
+      "examined": 483985,
+      "duration": 231.82808017730713
+    },
+    {
+      "grid_id": 6,
+      "complexity": 8,
+      "success": true,
+      "moves": 6,
+      "examined": 96339,
+      "duration": 41.016844272613525
+    },
+    {
+      "grid_id": 7,
+      "complexity": 9,
+      "success": true,
+      "moves": 9,
+      "examined": 2170262,
+      "duration": 1064.2173779010773
+    },
+    {
+      "grid_id": 8,
+      "complexity": 10,
+      "success": true,
+      "moves": 8,
+      "examined": 1680415,
+      "duration": 826.6165492534637
+    },
+    {
+      "grid_id": 9,
+      "complexity": 11,
+      "success": true,
+      "moves": 9,
+      "examined": 2279800,
+      "duration": 1063.4355084896088
+    },
+    {
+      "grid_id": 10,
+      "complexity": 12,
+      "success": true,
+      "moves": 4,
+      "examined": 14351,
+      "duration": 5.9403932094573975
+    }
+  ]
+}
